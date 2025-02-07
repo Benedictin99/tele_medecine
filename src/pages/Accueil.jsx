@@ -10,7 +10,6 @@ const Accueil = () => {
         <h1 className="text-2xl font-semibold">Bienvenue, Yamal Lamine 👋</h1>
         <p className="text-sm mt-2">Votre santé, notre priorité.</p>
       </div>
-
       {/* Statistiques de santé */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl shadow-md flex flex-col items-center">
@@ -33,26 +32,38 @@ const Accueil = () => {
       </div>
 
       {/* Accès rapide */}
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-4 ">
-        <button className="bg-blue-600 text-white p-4 rounded-lg flex flex-col items-center shadow-md hover:bg-blue-500">
+      <div className="flex flex-row justify-between">
+        <a
+          href="/home/consultation"
+          className="bg-blue-600 text-white p-4 rounded-lg w-[30%] flex flex-col items-center shadow-md hover:bg-blue-500"
+        >
           <MdOutlineMedicalServices className="text-3xl" />
           <span className="mt-2 text-sm">Consultation</span>
-        </button>
+        </a>
 
-        <button className="bg-green-600 text-white p-4 rounded-lg flex flex-col items-center shadow-md hover:bg-green-500">
+        <a
+          href="/home/messages"
+          className="bg-green-600 text-white p-4 w-[30%] rounded-lg flex flex-col items-center shadow-md hover:bg-green-500"
+        >
           <FiMessageCircle className="text-3xl" />
           <span className="mt-2 text-sm">Discussions</span>
-        </button>
+        </a>
 
-        <button className="bg-yellow-500 text-white p-4 rounded-lg flex flex-col items-center shadow-md hover:bg-yellow-400">
+        <a
+          href="/home/profil"
+          className="bg-blue-600 text-white p-4 w-[30%] rounded-lg flex flex-col items-center shadow-md hover:bg-blue-500"
+        >
           <FiUserCheck className="text-3xl" />
           <span className="mt-2 text-sm">Profile</span>
-        </button>
+        </a>
 
-        <button className="bg-gray-600 text-white p-4 rounded-lg flex flex-col items-center shadow-md hover:bg-gray-500">
+        {/* <a
+          href="/home/consultation"
+          className="bg-blue-600 text-white p-4 rounded-lg flex flex-col items-center shadow-md hover:bg-blue-500"
+        >
           <FiActivity className="text-3xl" />
           <span className="mt-2 text-sm">Historique</span>
-        </button>
+        </a> */}
       </div>
 
       {/* Liste des derniers rendez-vous */}

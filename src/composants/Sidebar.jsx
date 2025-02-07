@@ -9,16 +9,16 @@ const Sidebar = () => {
     setActiveLink(index);
   };
   const SIDE_LINKS = [
-    { id: 1, path: "/", name: "Tableau de bord", icon: TbBox },
-    { id: 2, path: "/docteurs", name: "Docteurs", icon: TbUsers },
+    { id: 1, path: "/home", name: "Tableau de bord", icon: TbBox },
+    { id: 2, path: "docteurs", name: "Docteurs", icon: TbUsers },
     {
       id: 3,
-      path: "/consultation",
+      path: "consultation",
       name: "Consultation",
       icon: MdOutlineMedicalServices,
     },
-    { id: 4, path: "/messages", name: "Message", icon: TbMessage },
-    { id: 5, path: "/profil", name: "Profil", icon: TbUserCircle },
+    { id: 4, path: "messages", name: "Message", icon: TbMessage },
+    { id: 5, path: "profil", name: "Profil", icon: TbUserCircle },
   ];
   return (
     <div className="w-16 md:w-65 fixed left-0 top-0 z-10 h-screen boder-r md:pt-6 md:px-5 bg-white">
