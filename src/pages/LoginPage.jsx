@@ -1,38 +1,63 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importez les icônes
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebaseConf"; // Assurez-vous que le chemin est correct
 import fond from "/lock.png";
+import { div } from "framer-motion/client";
 
 const LoginPage = () => {
-  // État pour gérer la visibilité du mot de passe
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
 
-  // Fonction pour basculer la visibilité du mot de passe
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Rediriger l'utilisateur après une connexion réussie
+      window.location.href = "/home";
+    } catch (error) {
+      setError("Échec de la connexion. Veuillez vérifier vos informations.");
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    setLoadingGoogle(true);
+    try {
+      await signInWithPopup(auth, googleProvider);
+      // Rediriger l'utilisateur après une connexion réussie
+      window.location.href = "/home";
+    } catch (error) {
+      setError("Échec de la connexion avec Google.");
+      setLoadingGoogle(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
-      {/* Section du formulaire (en bas sur mobile, à droite sur desktop) */}
       <div
         className="w-full flex items-center justify-center bg-transparent p-4"
         style={{ backgroundImage: `url(${fond})` }}
       >
-        {/* Carte pour le formulaire */}
         <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl w-full max-w-md transform transition-all hover:scale-105">
-          {/* Titre principal */}
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800">
             Connexion
           </h1>
-
-          {/* Sous-titre */}
           <p className="flex flex-col text-base md:text-lg text-gray-600 text-center mb-3 md:mb-5">
             Entrer votre information de connexion <span>pour continuer</span>
           </p>
-
-          {/* Formulaire de connexion */}
-          <form>
-            {/* Champ Email */}
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+          <form onSubmit={handleLogin}>
             <div className="mb-4 md:mb-6">
               <label
                 htmlFor="email"
@@ -45,12 +70,12 @@ const LoginPage = () => {
                 id="email"
                 name="email"
                 placeholder="email@mail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 required
               />
             </div>
-
-            {/* Champ Mot de passe */}
             <div className="mb-4 md:mb-6 relative">
               <label
                 htmlFor="password"
@@ -59,14 +84,15 @@ const LoginPage = () => {
                 Mot de passe
               </label>
               <input
-                type={showPassword ? "text" : "password"} // Basculer entre "text" et "password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder="Entrer votre mot de passe"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 required
               />
-              {/* Icône pour afficher/masquer le mot de passe */}
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
@@ -79,8 +105,6 @@ const LoginPage = () => {
                 )}
               </button>
             </div>
-
-            {/* Lien "Mot de passe oublié" */}
             <div className="mb-4 md:mb-6 text-right">
               <a
                 href="/forgot-password"
@@ -89,35 +113,86 @@ const LoginPage = () => {
                 Mot de passe oublier ?
               </a>
             </div>
-
-            {/* Bouton de connexion */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex justify-center items-center cursor-pointer"
+              disabled={loading}
             >
-              CONNEXION
-            </button>
-
-            {/* Séparateur "OR" */}
-            <div className="my-4 md:my-6 flex items-center">
-              <div className="flex-grow border-t border-gray-300"></div>
-              <span className="mx-4 text-gray-500">OU</span>
-              <div className="flex-grow border-t border-gray-300"></div>
-            </div>
-
-            {/* Lien d'inscription */}
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                Vous n'avez pas un compte ?{" "}
-                <a
-                  href="/register"
-                  className="text-blue-600 hover:text-blue-500 font-medium"
+              {loading ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
                 >
-                  Créer un compte
-                </a>
-              </p>
-            </div>
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  ></path>
+                </svg>
+              ) : (
+                "CONNEXION"
+              )}
+            </button>
           </form>
+          <div className="my-4 md:my-6 flex items-center">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <span className="mx-4 text-gray-500">OU</span>
+            <div className="flex-grow border-t border-gray-300"></div>
+          </div>
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 flex justify-center items-center cursor-pointer"
+            disabled={loadingGoogle}
+          >
+            {loadingGoogle ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            ) : (
+              <>
+                <FcGoogle className="h-5 w-5 mr-2" />
+                Connexion avec Google
+              </>
+            )}
+          </button>
+          <div className="text-center mt-4">
+            <p className="text-sm text-gray-600">
+              Vous n'avez pas un compte ?{" "}
+              <a
+                href="/register"
+                className="text-blue-600 hover:text-blue-500 font-medium"
+              >
+                Créer un compte
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

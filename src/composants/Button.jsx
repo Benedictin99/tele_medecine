@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Importation du hook useNaviga
 
 const Button = ({
   text,
+  type,
   bgColor = "bg-blue-700",
   textColor = "text-white",
   hoverColor = "hover:bg-blue-600",
@@ -27,11 +28,12 @@ const Button = ({
     <button
       onClick={handleClick} // Utilise la fonction handleClick
       disabled={disabled}
+      type={type}
       className={`${
         disabled
           ? "bg-gray-400 text-gray-700 cursor-not-allowed"
           : `${weight} ${bgColor} ${textColor} ${hoverColor}`
-      } px-6 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all`}
+      } px-6 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 text-center transition-all cursor-pointer`}
     >
       {text}
     </button>

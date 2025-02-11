@@ -21,49 +21,51 @@ const Navbar = () => {
           </h1>
         </ScrollLink>
 
-        <div className="hidden md:flex flex-1 justify-end space-x-6 px-5 text-lg font-semibold">
-          <ScrollLink
-            to="accueil"
-            smooth={true}
-            duration={600}
-            className="text-gray-700 hover:text-blue-600 cursor-pointer"
+        <div className="flex space-x-2">
+          <div className="hidden md:flex flex-1 justify-end space-x-6 px-5 text-lg font-semibold">
+            <ScrollLink
+              to="accueil"
+              smooth={true}
+              duration={600}
+              className="text-gray-700 hover:text-blue-600 cursor-pointer"
+            >
+              Accueil
+            </ScrollLink>
+            <ScrollLink
+              to="services"
+              smooth={true}
+              duration={600}
+              className="text-gray-700 hover:text-blue-600 cursor-pointer"
+            >
+              Services
+            </ScrollLink>
+            <ScrollLink
+              to="about"
+              smooth={true}
+              duration={600}
+              className="text-gray-700 hover:text-blue-600 cursor-pointer"
+            >
+              À propos
+            </ScrollLink>
+            <ScrollLink
+              to="contact"
+              smooth={true}
+              duration={600}
+              className="text-gray-700 hover:text-blue-600 cursor-pointer"
+            >
+              Contact
+            </ScrollLink>
+          </div>
+          <div className="flex">
+            <Button text="Connexion" redirectTo="/login" />
+          </div>
+          <button
+            className="md:hidden text-blue-600"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            Accueil
-          </ScrollLink>
-          <ScrollLink
-            to="services"
-            smooth={true}
-            duration={600}
-            className="text-gray-700 hover:text-blue-600 cursor-pointer"
-          >
-            Services
-          </ScrollLink>
-          <ScrollLink
-            to="about"
-            smooth={true}
-            duration={600}
-            className="text-gray-700 hover:text-blue-600 cursor-pointer"
-          >
-            À propos
-          </ScrollLink>
-          <ScrollLink
-            to="contact"
-            smooth={true}
-            duration={600}
-            className="text-gray-700 hover:text-blue-600 cursor-pointer"
-          >
-            Contact
-          </ScrollLink>
+            ☰
+          </button>
         </div>
-        <div className="hidden md:flex">
-          <Button text="Connexion" redirectTo="/login" />
-        </div>
-        <button
-          className="md:hidden text-blue-600"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          ☰
-        </button>
       </div>
 
       {isOpen && (
