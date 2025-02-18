@@ -143,7 +143,7 @@ const Accueil = () => {
       {/* Accès rapide */}
       <div className="flex flex-row justify-between">
         <a
-          href="/home/consultation"
+          href="/home/rendez-vous"
           className="bg-blue-600 text-white p-4 rounded-lg w-[30%] flex flex-col items-center shadow-md hover:bg-blue-500"
         >
           <MdOutlineMedicalServices className="text-3xl" />
@@ -159,7 +159,7 @@ const Accueil = () => {
         </a>
 
         <a
-          href="/home/profil"
+          href="/home/profile"
           className="bg-blue-600 text-white p-4 w-[30%] rounded-lg flex flex-col items-center shadow-md hover:bg-blue-500"
         >
           <FiUserCheck className="text-3xl" />

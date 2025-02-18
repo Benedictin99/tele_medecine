@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-16 md:left-65 right-0 z-5 flex justify-between items-center p-4 bg-white shadow-md">
+      <div className="fixed top-0 left-16 md:left-65 right-0 z-5 flex justify-between items-center p-4 bg-white shadow-sm">
         {/* Nom de l'utilisateur */}
         <div>
           <h1 className="text-xl font-semibold">Lamine Yamal</h1>

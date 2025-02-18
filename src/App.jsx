@@ -3,14 +3,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Layout from "./composants/Layout";
 
-import Accueil from "./pages/Sidebar/Accueil";
-import Messages from "./pages/Sidebar/Messages";
-import RendezVous from "./pages/Sidebar/RendezVous";
-import Profile from "./pages/Sidebar/Profile";
+import Accueil from "./pages/sidebar/Accueil";
+import Messages from "./pages/sidebar/Messages";
+import RendezVous from "./pages/sidebar/RendezVous";
+import Profile from "./pages/sidebar/Profile";
 
-import Home from "./pages/Home";
+import Home from "./pages/Welcome";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+
+// import Message from "./pages/sidebar/Messages";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        {/* <Route path="/chat" element={<Message />} /> */}
       </Routes>
     </BrowserRouter>
   );
