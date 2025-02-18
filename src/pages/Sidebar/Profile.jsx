@@ -6,7 +6,7 @@ const Profile = () => {
     name: "Lamine Yamal",
     email: "lamine.yamal@example.com",
     maladie: "Diabétique",
-    phone: "+261 32 45 67 89",
+    phone: "+261 32 34 567 89",
   });
 
   const [isEditing, setIsEditing] = useState(false);
