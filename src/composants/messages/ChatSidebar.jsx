@@ -74,7 +74,7 @@ const ChatSidebar = ({
         <div className="flex-1 min-w-0">
           <div className="flex items-center">
             <h3 className="font-medium truncate">{chat.name}</h3>
-            {chat.favorite && <Star className="w-4 h-4 text-blue-500 ml-1" />}
+            {chat.favorite && <Star className="w-4 h-4 ml-1" fill="blue" />}
           </div>
           <div className="flex justify-between items-baseline">
             <p className="text-sm text-gray-500 truncate">{chat.lastMessage}</p>
@@ -103,7 +103,7 @@ const ChatSidebar = ({
               }}
               className="block w-full text-left px-2 py-1 hover:bg-blue-100 text-sm"
             >
-              {chat.favorite ? "Retirer Favori" : "Ajouter Favori"}
+              {chat.favorite ? "Retirer Favori" : "Favori"}
             </button>
             <button
               onClick={(e) => {
@@ -134,7 +134,7 @@ const ChatSidebar = ({
           (chat) => chat.favorite
         );
         return (
-          <div className="flex-1 overflow-y-auto mt-20">
+          <div className="flex-1 overflow-y-auto">
             {savedConversations.length > 0 ? (
               savedConversations.map(renderConversationItem)
             ) : (
@@ -160,10 +160,10 @@ const ChatSidebar = ({
   };
 
   return (
-    <div className="h-full w-full md:w-80 bg-amber-200 flex flex-col fixed top-20 z-10 md:-ml-2">
+    <div className="h-full w-full md:w-80 bg-white flex flex-col fixed top-20 z-10 md:-ml-2">
       {/* Barre de recherche + navigation sticky (sous le header principal) */}
       <div className="sticky top-20 z-10 bg-white">
-        <div className="p-4 border-b">
+        <div className="p-4">
           <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-2">
             <Search className="w-5 h-5 text-gray-500" />
             <input
@@ -175,7 +175,7 @@ const ChatSidebar = ({
             />
           </div>
         </div>
-        <div className="flex justify-around p-2 border-b">
+        <div className="flex justify-around p-2">
           <button
             onClick={() => {
               handleTabClick("messages");

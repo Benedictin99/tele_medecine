@@ -36,7 +36,7 @@ const Sidebar = () => {
       {/* Fin Logo Section */}
 
       {/* Navigation */}
-      <ul className="mt-6 space-y-6">
+      <ul className="mt-6 space-y-3">
         {SIDE_LINKS.map((link, index) => (
           <li key={index}>
             <NavLink

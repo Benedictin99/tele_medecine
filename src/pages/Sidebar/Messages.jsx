@@ -264,7 +264,7 @@ const Messages = () => {
       {(!isMobile || !showChatList) && activeConversation && (
         <div className="flex-1 flex flex-col relative md:ml-78">
           {/* Chat Header (sticky sous le Header principal) */}
-          <div className="sticky top-20 z-10 bg-white p-4 flex items-center justify-between">
+          <div className="sticky top-20 z-0 bg-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
               {isMobile && (
                 <button
