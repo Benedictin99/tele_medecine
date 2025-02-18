@@ -12,6 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { FiMessageCircle, FiUserCheck } from "react-icons/fi";
 import { MdOutlineMedicalServices } from "react-icons/md";
+import Button from "../../composants/Button";
 
 // Enregistrement des composants ChartJS
 ChartJS.register(
@@ -108,15 +109,16 @@ const Accueil = () => {
       </div>
 
       {/* Graphiques de statistiques de santé */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
         {/* Graphique Glycémie */}
         <div className="bg-white p-4 rounded-xl shadow-md">
           <h2 className="text-gray-700 text-center font-semibold mb-2">
             Glycémie
           </h2>
-          <div className="w-full h-40">
+          <div className="w-full h-40 mb-5">
             <Line data={glycemiaData} options={options} />
           </div>
+          <Button text={"Prelevement"} redirectTo="/home/prelevement" />
         </div>
 
         {/* Graphique Tension Artérielle */}
@@ -124,9 +126,10 @@ const Accueil = () => {
           <h2 className="text-gray-700 text-center font-semibold mb-2">
             Tension Artérielle
           </h2>
-          <div className="w-full h-40">
+          <div className="w-full h-40 mb-5">
             <Line data={tensionData} options={options} />
           </div>
+          <Button text={"Prelevement"} redirectTo="/home/prelevement" />
         </div>
 
         {/* Graphique Température */}
@@ -134,9 +137,10 @@ const Accueil = () => {
           <h2 className="text-gray-700 text-center font-semibold mb-2">
             Température
           </h2>
-          <div className="w-full h-40">
+          <div className="w-full h-40 mb-5">
             <Line data={temperatureData} options={options} />
           </div>
+          <Button text={"Prelevement"} redirectTo="/home/prelevement" />
         </div>
       </div>
 
@@ -147,7 +151,7 @@ const Accueil = () => {
           className="bg-blue-600 text-white p-4 rounded-lg w-[30%] flex flex-col items-center shadow-md hover:bg-blue-500"
         >
           <MdOutlineMedicalServices className="text-3xl" />
-          <span className="mt-2 text-sm">Consultation</span>
+          <span className="mt-2 text-sm">Rendez-vous</span>
         </a>
 
         <a

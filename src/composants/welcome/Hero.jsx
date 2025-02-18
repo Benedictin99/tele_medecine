@@ -44,7 +44,7 @@ const Hero = () => {
               ))}
             </ul>
           </div>
-          <div className="text-2xl my-5 justify-end flex mr-20">
+          <div className="text-2xl my-5 justify-end flex mr-5 md:mr-20">
             <Button text="Commencer" redirectTo="/register" />
           </div>
         </div>

@@ -2,18 +2,25 @@ import React from "react";
 import { TbUserCircle, TbMessage, TbBox } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import { MdOutlineMedicalServices } from "react-icons/md";
+import { FaUserDoctor } from "react-icons/fa6";
 
 const Sidebar = () => {
   const SIDE_LINKS = [
     { id: 1, path: "/home", name: "Tableau de bord", icon: TbBox },
     {
       id: 2,
-      path: "rendez-vous",
-      name: "Rendez-vous",
+      path: "prelevement",
+      name: "Prelevement",
       icon: MdOutlineMedicalServices,
     },
-    { id: 3, path: "messages", name: "Message", icon: TbMessage },
-    { id: 4, path: "profile", name: "Profil", icon: TbUserCircle },
+    {
+      id: 3,
+      path: "rendez-vous",
+      name: "Rendez-vous",
+      icon: FaUserDoctor,
+    },
+    { id: 4, path: "messages", name: "Message", icon: TbMessage },
+    { id: 5, path: "profile", name: "Profil", icon: TbUserCircle },
   ];
 
   return (

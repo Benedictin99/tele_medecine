@@ -108,7 +108,7 @@ const RendezVous = () => {
   return (
     <div className="p-4 space-y-6">
       {/* En-tête */}
-      <div className="flex flex-col md:flex-row justify-between items-center">
+      <div className="flex md:flex-row justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-800">Rendez‑vous</h1>
 
         <Button

@@ -4,14 +4,13 @@ import Button from "../Button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("accueil");
 
-  const handleSetActive = (to) => {
-    setSelected(to);
+  const handleLinkClick = () => {
+    setIsOpen(false); // Fermer le menu après avoir cliqué sur un lien
   };
 
   return (
-    <nav className="bg-white fixed w-full z-10">
+    <nav className="bg-white fixed w-full z-10 h-auto">
       <div className="container mx-auto p-4 flex justify-between items-center">
         {/* Logo */}
         <ScrollLink
@@ -19,7 +18,6 @@ const Navbar = () => {
           smooth={true}
           duration={600}
           className="cursor-pointer"
-          onSetActive={() => handleSetActive("accueil")}
         >
           <h1 className="text-3xl font-bold">
             <span className="text-black font-bold">TELE</span>
@@ -28,15 +26,12 @@ const Navbar = () => {
         </ScrollLink>
 
         <div className="flex space-x-2">
-          <div className="hidden md:flex justify-end space-x-6 px-5 text-lg font-semibold">
+          <div className="hidden md:flex justify-end items-center space-x-6 px-5 text-lg font-semibold">
             <ScrollLink
               to="accueil"
               smooth={true}
               duration={600}
-              className={`cursor-pointer ${
-                selected === "accueil" ? "text-blue-600" : "text-gray-700"
-              } hover:text-blue-600`}
-              onClick={() => handleSetActive("accueil")}
+              className="cursor-pointer hover:text-blue-600"
             >
               Accueil
             </ScrollLink>
@@ -44,10 +39,7 @@ const Navbar = () => {
               to="services"
               smooth={true}
               duration={600}
-              className={`cursor-pointer ${
-                selected === "services" ? "text-blue-600" : "text-gray-700"
-              } hover:text-blue-600`}
-              onClick={() => handleSetActive("services")}
+              className="cursor-pointer hover:text-blue-600"
             >
               Services
             </ScrollLink>
@@ -55,10 +47,7 @@ const Navbar = () => {
               to="about"
               smooth={true}
               duration={600}
-              className={`cursor-pointer ${
-                selected === "about" ? "text-blue-600" : "text-gray-700"
-              } hover:text-blue-600`}
-              onClick={() => handleSetActive("about")}
+              className="cursor-pointer hover:text-blue-600"
             >
               À propos
             </ScrollLink>
@@ -66,10 +55,7 @@ const Navbar = () => {
               to="contact"
               smooth={true}
               duration={600}
-              className={`cursor-pointer ${
-                selected === "contact" ? "text-blue-600" : "text-gray-700"
-              } hover:text-blue-600`}
-              onClick={() => handleSetActive("contact")}
+              className="cursor-pointer hover:text-blue-600"
             >
               Contact
             </ScrollLink>
@@ -92,10 +78,8 @@ const Navbar = () => {
             to="accueil"
             smooth={true}
             duration={600}
-            className={`cursor-pointer ${
-              selected === "accueil" ? "text-blue-600" : "text-gray-700"
-            } hover:text-blue-600`}
-            onClick={() => handleSetActive("accueil")}
+            className="cursor-pointer hover:text-blue-600"
+            onClick={handleLinkClick}
           >
             Accueil
           </ScrollLink>
@@ -103,10 +87,8 @@ const Navbar = () => {
             to="services"
             smooth={true}
             duration={600}
-            className={`py-2 cursor-pointer ${
-              selected === "services" ? "text-blue-600" : "text-gray-700"
-            } hover:text-blue-600`}
-            onClick={() => handleSetActive("services")}
+            className="py-2 cursor-pointer hover:text-blue-600"
+            onClick={handleLinkClick}
           >
             Services
           </ScrollLink>
@@ -114,10 +96,8 @@ const Navbar = () => {
             to="about"
             smooth={true}
             duration={600}
-            className={`py-2 cursor-pointer ${
-              selected === "about" ? "text-blue-600" : "text-gray-700"
-            } hover:text-blue-600`}
-            onClick={() => handleSetActive("about")}
+            className="py-2 cursor-pointer hover:text-blue-600"
+            onClick={handleLinkClick}
           >
             À propos
           </ScrollLink>
@@ -125,10 +105,8 @@ const Navbar = () => {
             to="contact"
             smooth={true}
             duration={600}
-            className={`py-2 cursor-pointer ${
-              selected === "contact" ? "text-blue-600" : "text-gray-700"
-            } hover:text-blue-600`}
-            onClick={() => handleSetActive("contact")}
+            className="py-2 cursor-pointer hover:text-blue-600"
+            onClick={handleLinkClick}
           >
             Contact
           </ScrollLink>
