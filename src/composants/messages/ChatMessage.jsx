@@ -1,7 +1,7 @@
 import React from "react";
-import { Download } from "lucide-react";
+import { Download, Trash2 } from "lucide-react";
 
-const ChatMessage = ({ message }) => {
+const ChatMessage = ({ message, onDeleteMessage }) => {
   const isMe = message.sender === "me";
 
   const renderMedia = () => {
@@ -47,9 +47,9 @@ const ChatMessage = ({ message }) => {
   };
 
   return (
-    <div className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
+    <div className={`flex ${isMe ? "justify-end" : "justify-start"} relative`}>
       <div
-        className={`max-w-[70%] rounded-2xl px-4 py-2 ${
+        className={`max-w-[70%] rounded-2xl px-4 py-2 relative ${
           isMe
             ? "bg-blue-500 text-white rounded-br-none"
             : "bg-white text-gray-800 rounded-bl-none"
@@ -60,6 +60,13 @@ const ChatMessage = ({ message }) => {
         <p className={`text-xs ${isMe ? "text-blue-100" : "text-gray-500"}`}>
           {message.time}
         </p>
+        {/* Bouton pour supprimer le message */}
+        <button
+          onClick={() => onDeleteMessage(message.id)}
+          className="absolute top-1 right-1 p-1 hover:bg-red-100 rounded-full"
+        >
+          <Trash2 className="w-4 h-4 text-red-500" />
+        </button>
       </div>
     </div>
   );
